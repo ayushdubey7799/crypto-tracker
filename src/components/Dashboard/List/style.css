@@ -49,6 +49,34 @@
 }
 
 @media only screen and (max-width: 800px){
+   .grey-wrapper{
+    width: 100% !important;
+   }
+   
+    .list-chip-flex{
+        margin: 1rem -0.5rem !important;
+    }
+
+    .coin-price{
+        font-size: small !important;
+    }
+
+    .price-chip{
+        padding: 0.5rem 0.5rem !important;
+    }
+    .list-row{
+    margin: 0rem !important;
+   }
+
+   .coin-symbol{
+    font-size: small !important;
+   }
+
+   .td-image{
+    width: 3rem !important;
+   }
+
+  
     .desktop-td-mkt{
         display: none;
     }

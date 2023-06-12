@@ -52,7 +52,7 @@
 .chip-flex{
     display: flex;
     justify-content: flex-start;
-    gap: 1rem;
+    gap: 0.7rem;
     align-items: center;
     margin: 1rem 1.5rem;
 }

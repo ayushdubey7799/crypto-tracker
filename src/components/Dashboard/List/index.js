@@ -30,7 +30,7 @@ function List({coin}) {
                 (             
  
                 <td>
-                <div className='chip-flex'>
+                <div className='chip-flex list-chip-flex'>
                     <div className='price-chip'>
                         +{coin.price_change_percentage_24h.toFixed(2)}%
                     </div>
@@ -41,7 +41,7 @@ function List({coin}) {
                  </td> )         
                 :
                 (             
-                <td><div className='chip-flex'>
+                <td><div className='chip-flex list-chip-flex'>
                     <div className='price-chip chip-red'>{coin.price_change_percentage_24h.toFixed(2)}%</div>
                     <div className='icon-chip chip-red td-icon'><TrendingDownRoundedIcon /></div>
                     </div>
