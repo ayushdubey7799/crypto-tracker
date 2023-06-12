@@ -92,7 +92,7 @@ function ComparePage() {
 
 
 
-    window.onscroll = "";
+    // window.onscroll = "";
     return (
         <div>
             <Header />

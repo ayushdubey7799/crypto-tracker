@@ -20,7 +20,7 @@ function List({coin}) {
                 <Tooltip title="Coin Info">
                 <td>
                 <div className='name-col'>
-                    <p className='coin-symbol'>{coin.symbol}-USD</p>
+                    <p className='coin-symbol list-sm-font'>{coin.symbol}-USD</p>
                     <p className='coin-name'>{coin.name}</p>
                 </div>
                 </td>
@@ -31,7 +31,7 @@ function List({coin}) {
  
                 <td>
                 <div className='chip-flex list-chip-flex'>
-                    <div className='price-chip'>
+                    <div className='price-chip list-sm-font'>
                         +{coin.price_change_percentage_24h.toFixed(2)}%
                     </div>
                     <div className='icon-chip td-icon'>
@@ -42,7 +42,7 @@ function List({coin}) {
                 :
                 (             
                 <td><div className='chip-flex list-chip-flex'>
-                    <div className='price-chip chip-red'>{coin.price_change_percentage_24h.toFixed(2)}%</div>
+                    <div className='price-chip chip-red list-sm-font'>{coin.price_change_percentage_24h.toFixed(2)}%</div>
                     <div className='icon-chip chip-red td-icon'><TrendingDownRoundedIcon /></div>
                     </div>
                 </td>)
@@ -50,7 +50,7 @@ function List({coin}) {
             </Tooltip>
                          <Tooltip title="Current Price">
 
-                <td className='coin-price td-center-align'
+                <td className='coin-price td-center-align list-sm-font'
                     style={{
                         color: coin.price_change_percentage_24h < 0
                             ? "var(--red)"
@@ -74,7 +74,7 @@ function List({coin}) {
                 </Tooltip>
                 <Tooltip title="Market Cap">
 
-                <td className='mobile-td-mkt'>
+                <td className='mobile-td-mkt list-sm-font'>
                    ${convertNumber(coin.market_cap)}
                 </td>
                 </Tooltip>
