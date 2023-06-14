@@ -1,14 +1,14 @@
 import React from 'react'
 import Header from '../components/Common/Header'
 import TabsComponent from '../components/Dashboard/Tabs'
-import { useState } from 'react'
-import { useEffect } from 'react';
-import axios from 'axios';
+import { useState,useEffect } from 'react'
 import Search from '../components/Dashboard/Search';
 import PaginationControlled from '../components/Dashboard/Pagination';
 import Loader from '../components/Common/Loader';
 import BackToTop from '../components/Common/BackToTop';
 import { get100Coins } from '../functions/get100Coins';
+import Footer from '../components/Common/Footer';
+
 function Dashboard() {
   const [coins, setCoins] = useState([]);
   const [paginatedCoins,setPaginatedCoins] = useState([]);
@@ -32,13 +32,15 @@ function Dashboard() {
     }
   )
 
+  
   useEffect(() => {
     getData();
   },[]);
 
   const getData = async () => {
     setIsLoading(true);
-    const myCoins = await get100Coins();
+    let myCoins = await get100Coins();
+    // myCoins = setWatchlist(myCoins);
     if(myCoins){
     setCoins(myCoins);
     setPaginatedCoins(myCoins.slice(0,10));
@@ -54,8 +56,9 @@ function Dashboard() {
       {isLoading?<Loader/>:
       <>
      <Search search={search} onSearchChange={onSearchChange}/>
-     <TabsComponent coins={search? filteredCoins : paginatedCoins}/>
+     <TabsComponent coins={search? filteredCoins : paginatedCoins} forWatchlist={false}/>
      {!search && <PaginationControlled page={page} handlePageChange={handlePageChange}/>}
+     <Footer/>
      </>
      }
     </div>

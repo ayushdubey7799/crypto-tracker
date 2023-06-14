@@ -1,17 +1,37 @@
-import React from 'react'
+import React,{useState} from 'react'
 import TrendingUpRoundedIcon from '@mui/icons-material/TrendingUpRounded';
 import TrendingDownRoundedIcon from '@mui/icons-material/TrendingDownRounded';
 import Tooltip from '@mui/material/Tooltip';
+import {motion} from 'framer-motion';
 import { convertNumber } from '../../../functions/convertNumbers';
 import "./style.css";
 import { Link } from 'react-router-dom';
+import BookmarkAddRoundedIcon from '@mui/icons-material/BookmarkAddRounded';
+import BookmarkAddedRoundedIcon from '@mui/icons-material/BookmarkAddedRounded'; import { IconButton } from '@mui/material';
+import BookmarkRemoveRoundedIcon from '@mui/icons-material/BookmarkRemoveRounded';
+import { addToWatchlist } from '../../../functions/addToWatchlist';
+import { isInWatchlist } from '../../../functions/isInWatchlist';
 
-function List({coin}) {
+function List({coin,key,forWatchlist,handleRemove}) {
+    const [addedToWatchlist, setAddedToWatchlist] = useState(isInWatchlist(coin.id));
+
+    const handleAddToWatchlist = (event) => {
+        event.preventDefault();
+        if(addedToWatchlist)return;
+        addToWatchlist(coin.id);
+        setAddedToWatchlist(true);
+    }
+
+   
 
   return (
     <Link to={`/coin/${coin.id}`}>
 
-    <tr className='list-row'>
+    <motion.tr 
+        className='list-row'
+        initial={{opacity:0, x: -150}}
+        whileInView={{opacity:1, x: 0}}
+        transition={{duration: 1, delay:(key+1)*0.1}}>
            <Tooltip title="Logo">
                 <td className='td-image'>
                     <img src={coin.image} className='coin-logo' alt='i' />
@@ -48,7 +68,7 @@ function List({coin}) {
                 </td>)
             }
             </Tooltip>
-                         <Tooltip title="Current Price">
+                <Tooltip title="Current Price">
 
                 <td className='coin-price td-center-align list-sm-font'
                     style={{
@@ -73,12 +93,30 @@ function List({coin}) {
                 </td>
                 </Tooltip>
                 <Tooltip title="Market Cap">
-
                 <td className='mobile-td-mkt list-sm-font'>
                    ${convertNumber(coin.market_cap)}
                 </td>
                 </Tooltip>
-    </tr>
+                <Tooltip title="Save to WatchList">
+                <td>
+                {
+                        forWatchlist?
+                           (<IconButton onClick={(event) => handleRemove(event,coin.id)} style={{ marginLeft: '3rem' }}>
+                           <BookmarkRemoveRoundedIcon style={{ color: 'var(--blue)' }}/>
+                        </IconButton>)
+                           :
+                           (<IconButton onClick={handleAddToWatchlist} style={{ marginLeft: '3rem' }}>
+                               {addedToWatchlist ?
+                                  <BookmarkAddedRoundedIcon style={{ color: 'var(--blue)',fontSize: '2rem' }} />
+                                  :
+                                  <BookmarkAddRoundedIcon style={{ fontSize: '2rem' }} />
+                               }
+                            </IconButton>)
+                    }
+
+                </td>
+                </Tooltip>
+    </motion.tr>
     </Link>
   )
 }

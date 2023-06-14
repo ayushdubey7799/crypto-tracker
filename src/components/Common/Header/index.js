@@ -19,6 +19,11 @@ const Header = () => {
                    text={"Dashboard"} 
                    onClick={() => {console.log("btn-clicked")}}/>
             </Link>
+            <Link to="/watchlist">
+                <Button 
+                   text={"Watchlist"} 
+                   onClick={() => {console.log("btn-clicked")}}/>
+            </Link>
         </div>
         <div className="mobile-drawer">
         <TemporaryDrawer />

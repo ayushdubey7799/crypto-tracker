@@ -12,6 +12,7 @@ import LineChart from '../components/Coin/LineChart';
 import { settingChartData } from '../functions/settingChartData';
 import BackToTop from '../components/Common/BackToTop';
 import TogglePriceType from '../components/Coin/PriceType';
+import Footer from '../components/Common/Footer';
 
 function CoinPage() {
   const {id} = useParams();
@@ -89,7 +90,7 @@ function CoinPage() {
         )
 
         }
-      
+      <Footer/>
     </div>
   )
 }

@@ -4,11 +4,12 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { createTheme, ThemeProvider } from '@mui/material';
+
 import Grid from '../Grid';
 import "./style.css";
 import List from '../List';
 
-export default function TabsComponent({coins}) {
+export default function TabsComponent({coins,forWatchlist,handleRemove}) {
     const [value, setValue] = useState('grid');
 
     const handleChange = (event, newValue) => {
@@ -31,6 +32,8 @@ export default function TabsComponent({coins}) {
         textTransform: "capitalize"
     }
 
+  
+
     return (
         <ThemeProvider theme={theme}>
             <TabContext value={value}>
@@ -41,15 +44,23 @@ export default function TabsComponent({coins}) {
                 <TabPanel value="grid">
                 <div className='grid-flex'>
                     {coins.map((coin,i) => {
-                            return <Grid coin = {coin} key={i}/>
+                            return <Grid 
+                                      coin = {coin} 
+                                      key={i} 
+                                      forWatchlist={forWatchlist} 
+                                      handleRemove={handleRemove}/>
                         })}
                 </div>
                 </TabPanel>
                 <TabPanel value="list">
                     <table className='list-table'>
                         {
-                            coins.map((coin) => {
-                                return <List coin={coin}/>
+                            coins.map((coin,i) => {
+                                return <List 
+                                          coin={coin} 
+                                          key={i}
+                                          forWatchlist={forWatchlist} 
+                                          handleRemove={handleRemove}/>
                             })
                         }
                     </table>
