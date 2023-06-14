@@ -33,7 +33,7 @@ export default function TemporaryDrawer() {
             <Link to="/"><p className="link">Home</p></Link>
             <Link to="/compare"><p className="link">Compare</p></Link>
             <Link to="/dashboard"><p className="link">Dashboard</p></Link>
-            {currentUser.name?
+            {currentUser?.name?
                (<Link to="/watchlist">
               <p className="link">Watchlist</p>
            </Link>)
