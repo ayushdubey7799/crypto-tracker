@@ -32,7 +32,7 @@ export default function Authentication({ open, handleClose, type }) {
             setUser({ ...user, name });
         }
 
-        if (event.target.name === "email") {
+        if (event.target.email === "email") {
             let email = event.target.value;
              setUser({ ...user, email });
         }
