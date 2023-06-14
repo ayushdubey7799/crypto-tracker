@@ -6,6 +6,7 @@ import './style.css';
 import { addNewUser } from '../../../functions/addNewUser';
 import { authenticateUser } from '../../../functions/authenticateUser';
 import {toast} from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 
 const style = {
@@ -72,7 +73,6 @@ export default function Authentication({ open, handleClose, type }) {
     }
 
     const handleLogout = (event) => {
-        event.preventDefault();
         localStorage.setItem('currentUser',JSON.stringify(user));
         handleClose();
         toast.success("Successfully Logged Out");
@@ -125,7 +125,11 @@ export default function Authentication({ open, handleClose, type }) {
                             </div>
 
                             <button className="submit" type="submit" onClick={handleLogin}>LogIn</button>  
-                            <button className="submit logout" type="submit" onClick={handleLogout}>LogOut</button>
+                            <Link to="/" style={{width: '100%'}}>
+                            <button className="submit logout" style={{width: '100%'}} type="submit" onClick={handleLogout}>
+                                LogOut
+                            </button>
+                            </Link>
                         </form>)}
                 </Box>
             </Modal>

@@ -18,8 +18,7 @@ function List({coin,key,forWatchlist,handleRemove}) {
     const handleAddToWatchlist = (event) => {
         event.preventDefault();
         if(addedToWatchlist)return;
-        addToWatchlist(coin.id);
-        setAddedToWatchlist(true);
+        if(addToWatchlist(coin.id))setAddedToWatchlist(true);
     }
 
    

@@ -2,7 +2,7 @@ import {toast} from "react-toastify";
 
 export const addToWatchlist = (id) => {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if(!currentUser.name){
+    if(!currentUser?.name){
         toast.error("Log in to add to watchlist");
         return false;
     }
