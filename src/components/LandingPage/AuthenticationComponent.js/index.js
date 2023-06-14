@@ -26,13 +26,13 @@ export default function Authentication({ open, handleClose, type }) {
     const [user, setUser] = useState({name: "",email: ""})
 
     const handleInput = (event) => {
-        console.log(event.target.name)
+        console.log(event.target.name);
         if (event.target.name === "full-name") {
             let name = event.target.value;
             setUser({ ...user, name });
         }
 
-        if (event.target.email === "email") {
+        if (event.target.name === "email") {
             let email = event.target.value;
              setUser({ ...user, email });
         }
@@ -93,12 +93,20 @@ export default function Authentication({ open, handleClose, type }) {
                             <h1>Sign Up</h1>
                             <div className="field">
                                 <label>Full Name </label>
-                                <input type="text" name="full-name" placeholder="Full Name" onChange={handleInput} />
+                                <input 
+                                   type="text" 
+                                   name="full-name" 
+                                   placeholder="Full Name" 
+                                   onChange={handleInput} />
                             </div>
                             <div className="field">
                                 <label>Email </label>
                                 
-                                <input type="email" name="email" placeholder="Email" onChange={handleInput} />
+                                <input 
+                                   type="email" 
+                                   name="email" 
+                                   placeholder="Email" 
+                                   onChange={handleInput} />
                                 
                             </div>
 

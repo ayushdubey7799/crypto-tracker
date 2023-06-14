@@ -42,7 +42,7 @@ const Header = () => {
                    text={"Dashboard"} 
                    onClick={() => {console.log("btn-clicked")}}/>
             </Link>
-            {currentUser.name?
+            {currentUser?.name?
                (<Link to="/watchlist">
                <Button 
                   text={"Watchlist"} 

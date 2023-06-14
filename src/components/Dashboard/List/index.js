@@ -41,7 +41,9 @@ function List({coin,key,forWatchlist,handleRemove}) {
                 <td>
                 <div className='name-col'>
                     <p className='coin-symbol list-sm'>{coin.symbol}</p>
-                    <p className='coin-name list-sm'>{coin.name.length>8?coin.name.slice(0,8)+"...":coin.name}</p>
+                    <p className='coin-name list-sm'>
+                        {coin.name.length>8?coin.name.slice(0,8)+"...":coin.name}
+                    </p>
                 </div>
                 </td>
                 </Tooltip>
