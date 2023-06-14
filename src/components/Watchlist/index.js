@@ -5,13 +5,14 @@ import TabsComponent from '../Dashboard/Tabs'
 import Loader from '../Common/Loader'
 import { get100Coins } from '../../functions/get100Coins'
 import { removeFromWatchlist } from '../../functions/removeFromWatchlist'
+import "./style.css";
 
 function Watchlist() {
     const [isLoading,setIsLoading] = useState(false);
     const [updateToggle,setUpdateToggle] = useState(true);
     const [watchlistCoins,setWatchlistCoins] = useState([]);
 
-    const watchlist = JSON.parse(localStorage.getItem('watchlist'));
+    const watchlist = JSON.parse(localStorage.getItem('currentUser')).watchlistCoins;
     useEffect(() => {
         getData();
       },[updateToggle]);
@@ -34,8 +35,10 @@ function Watchlist() {
         <div>
             <Header />
             <BackToTop />
-            {isLoading ? <Loader /> :
-                <TabsComponent coins={watchlistCoins} forWatchlist={true} handleRemove={handleRemove}/>
+            {isLoading ? <Loader /> : watchlistCoins.length>0?
+            (<TabsComponent coins={watchlistCoins} forWatchlist={true} handleRemove={handleRemove}/>)
+            :
+            (<div className='empty'><h1>Your Watchlist is Empty.</h1></div>)
             }
         </div>
     )

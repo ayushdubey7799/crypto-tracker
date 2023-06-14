@@ -33,15 +33,15 @@ function List({coin,key,forWatchlist,handleRemove}) {
         whileInView={{opacity:1, x: 0}}
         transition={{duration: 1, delay:(key+1)*0.1}}>
            <Tooltip title="Logo">
-                <td className='td-image'>
+                <td className='td-image list-sm'>
                     <img src={coin.image} className='coin-logo' alt='i' />
                 </td>
                 </Tooltip>
                 <Tooltip title="Coin Info">
                 <td>
                 <div className='name-col'>
-                    <p className='coin-symbol list-sm-font'>{coin.symbol}-USD</p>
-                    <p className='coin-name'>{coin.name}</p>
+                    <p className='coin-symbol list-sm'>{coin.symbol}</p>
+                    <p className='coin-name list-sm'>{coin.name.length>8?coin.name.slice(0,8)+"...":coin.name}</p>
                 </div>
                 </td>
                 </Tooltip>
@@ -51,7 +51,7 @@ function List({coin,key,forWatchlist,handleRemove}) {
  
                 <td>
                 <div className='chip-flex list-chip-flex'>
-                    <div className='price-chip list-sm-font'>
+                    <div className='price-chip list-sm'>
                         +{coin.price_change_percentage_24h.toFixed(2)}%
                     </div>
                     <div className='icon-chip td-icon'>
@@ -62,7 +62,7 @@ function List({coin,key,forWatchlist,handleRemove}) {
                 :
                 (             
                 <td><div className='chip-flex list-chip-flex'>
-                    <div className='price-chip chip-red list-sm-font'>{coin.price_change_percentage_24h.toFixed(2)}%</div>
+                    <div className='price-chip chip-red list-sm'>{coin.price_change_percentage_24h.toFixed(2)}%</div>
                     <div className='icon-chip chip-red td-icon'><TrendingDownRoundedIcon /></div>
                     </div>
                 </td>)
@@ -70,7 +70,7 @@ function List({coin,key,forWatchlist,handleRemove}) {
             </Tooltip>
                 <Tooltip title="Current Price">
 
-                <td className='coin-price td-center-align list-sm-font'
+                <td className='coin-price td-center-align list-sm'
                     style={{
                         color: coin.price_change_percentage_24h < 0
                             ? "var(--red)"
@@ -93,19 +93,19 @@ function List({coin,key,forWatchlist,handleRemove}) {
                 </td>
                 </Tooltip>
                 <Tooltip title="Market Cap">
-                <td className='mobile-td-mkt list-sm-font'>
+                <td className='mobile-td-mkt list-sm'>
                    ${convertNumber(coin.market_cap)}
                 </td>
                 </Tooltip>
                 <Tooltip title="Save to WatchList">
-                <td>
+                <td className='mark'>
                 {
                         forWatchlist?
-                           (<IconButton onClick={(event) => handleRemove(event,coin.id)} style={{ marginLeft: '3rem' }}>
+                           (<IconButton onClick={(event) => handleRemove(event,coin.id)} >
                            <BookmarkRemoveRoundedIcon style={{ color: 'var(--blue)' }}/>
                         </IconButton>)
                            :
-                           (<IconButton onClick={handleAddToWatchlist} style={{ marginLeft: '3rem' }}>
+                           (<IconButton onClick={handleAddToWatchlist} >
                                {addedToWatchlist ?
                                   <BookmarkAddedRoundedIcon style={{ color: 'var(--blue)',fontSize: '2rem' }} />
                                   :
