@@ -76,7 +76,7 @@ export default function Authentication({ open, handleClose, type }) {
     }
 
     const handleLogout = (event) => {
-        localStorage.setItem('currentUser',JSON.stringify(user));
+        localStorage.setItem('currentUser',JSON.stringify({name: "",email: ""}));
         handleClose();
         toast.success("Successfully Logged Out");
     }
