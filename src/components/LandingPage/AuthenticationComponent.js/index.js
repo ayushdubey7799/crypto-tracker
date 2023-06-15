@@ -50,11 +50,12 @@ export default function Authentication({ open, handleClose, type }) {
             toast.warn('Please fill name field')
             return;
         }
-        addNewUser(user,toast);
-        setUser({name: "",email: ""});
+        if(addNewUser(user,toast)){
+            setUser({name: "",email: ""});
 
-        handleClose();
-        console.log(user);
+            handleClose();
+        };
+        
     }
 
     const handleLogin = (event) => {
@@ -67,8 +68,10 @@ export default function Authentication({ open, handleClose, type }) {
         toast.warn('Please fill name field')
         return;
     }
-       if(authenticateUser(user,toast))handleClose();
-       setUser({name: "",email: ""});
+       if(authenticateUser(user,toast)){
+        setUser({name: "",email: ""});
+        handleClose();
+       }
 
     }
 
