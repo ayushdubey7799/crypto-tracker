@@ -8,6 +8,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 function Footer() {
   
   return (
+    
     <div className="footer">
       <h2 className="logo">
         CryptoTracker<span>.</span>

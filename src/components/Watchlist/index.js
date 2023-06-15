@@ -9,13 +9,13 @@ import "./style.css";
 
 function Watchlist() {
     const [isLoading,setIsLoading] = useState(false);
-    const [updateToggle,setUpdateToggle] = useState(true);
+    // const [updateToggle,setUpdateToggle] = useState(true);
     const [watchlistCoins,setWatchlistCoins] = useState([]);
 
     const watchlist = JSON.parse(localStorage.getItem('currentUser')).watchlistCoins;
     useEffect(() => {
         getData();
-      },[updateToggle]);
+      },[]);
     
       const getData = async () => {
         setIsLoading(true);
@@ -27,7 +27,7 @@ function Watchlist() {
       }
 
       const handleRemove = (event,id) => {
-        setUpdateToggle(!updateToggle);
+        setWatchlistCoins(watchlistCoins.filter((coin) => coin.id!==id));
         event.preventDefault();
         removeFromWatchlist(id);
       }
