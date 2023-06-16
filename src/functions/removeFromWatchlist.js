@@ -1,6 +1,7 @@
 import {toast} from "react-toastify";
 
 export const removeFromWatchlist = (id) => {
+    
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const coins = currentUser.watchlistCoins.filter((coin) => coin !== id);
     currentUser.watchlistCoins = coins;

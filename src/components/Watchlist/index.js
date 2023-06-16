@@ -27,6 +27,8 @@ function Watchlist() {
       }
 
       const handleRemove = (event,id) => {
+        event.preventDefault();
+        if(!window.confirm("Are you sure you want to remove this coin ?"))return;
         setWatchlistCoins(watchlistCoins.filter((coin) => coin.id!==id));
         event.preventDefault();
         removeFromWatchlist(id);

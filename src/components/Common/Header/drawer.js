@@ -1,7 +1,7 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import Drawer from '@mui/material/Drawer';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import { IconButton } from '@mui/material';
+import { IconButton, Switch } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Authentication from '../../LandingPage/AuthenticationComponent.js';
 
@@ -10,6 +10,7 @@ export default function TemporaryDrawer() {
   const [open, setOpen] = useState(false);
   const [signUpOpen, setSignupOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [toggle,setToggle] = useState(false);
 
  const handleSignupOpen = () => setSignupOpen(true);
  const handleSignupClose = () => setSignupOpen(false);
@@ -19,6 +20,28 @@ export default function TemporaryDrawer() {
 
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
+  const toggleTheme = () => {
+    setToggle(!toggle);
+  };
+   
+   const applyTheme = () => {
+    let currentTheme = JSON.parse(localStorage.getItem('mode'));
+    currentTheme = currentTheme=='dark'?'light':'dark';
+    let themeToBeRemoved = currentTheme=='dark'?'light':'dark';
+    document.body.classList.remove(themeToBeRemoved);
+    document.body.classList.add(currentTheme);
+    localStorage.setItem('mode',JSON.stringify(currentTheme));
+  };
+ 
+
+  useEffect(() => {
+    let currentTheme = JSON.parse(localStorage.getItem('mode'));
+    if(!currentTheme)localStorage.setItem('mode','dark');
+  }, []);
+
+  useEffect(() => {
+    applyTheme();
+  }, [toggle]);
 
   
   return (
@@ -48,6 +71,7 @@ export default function TemporaryDrawer() {
                 <p className="link" onClick={handleLoginOpen}>LogIn/LogOut</p>
                 <Authentication open={loginOpen} handleClose={handleLoginClose} handleOpen={handleLoginOpen} type={'login'}/>
             </div>
+            <Switch onClick={toggleTheme}/>
             </div>
           </Drawer>
        

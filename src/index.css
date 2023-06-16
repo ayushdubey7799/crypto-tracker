@@ -2,7 +2,7 @@
 
 
 
-:root {
+body.dark {
   --white: #fff;
   --black: #111;
   --blue: #3a80e9;
@@ -12,12 +12,22 @@
   --red: #f94141;
 }
 
+body.light{
+  --white: #111;
+  --black: #f5f2f2;
+  --blue: #3a80e9;
+  --grey: #1b1b1b;
+  --darkgrey: #e2f5f5;
+  --green: #61c96f;
+  --red: #f94141;
+}
+
 html{
   scroll-behavior: smooth;
 }
 
 
-body {
+body{
   margin: 0;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,7 +35,6 @@ body {
   background-color: var(--black);
   color: var(--white);
 }
-
 
 ::selection{
   background-color: var(--blue);
@@ -69,3 +78,14 @@ a{
   align-items: center;
   gap: 2rem;
 }
+
+/* for light mode */
+
+/* body.light h1, h2, h3{
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--white);
+  color: var(--black);
+} */
