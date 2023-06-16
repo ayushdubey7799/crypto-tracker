@@ -37,6 +37,7 @@ input, .submit{
 .submit:hover{
   background-color: var(--white);
   border-color: var(--blue);
+  color: var(--black);
 }
 
 form h1{

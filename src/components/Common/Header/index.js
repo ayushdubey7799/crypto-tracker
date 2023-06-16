@@ -4,7 +4,6 @@ import TemporaryDrawer from "./drawer";
 import Button from "../Button";
 import { Link } from "react-router-dom";
 import Authentication from "../../LandingPage/AuthenticationComponent.js";
-import ThemeToggle from "../ThemeToggle";
 import { Switch } from "@mui/material";
 
 

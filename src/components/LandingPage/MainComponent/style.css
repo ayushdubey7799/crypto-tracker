@@ -7,7 +7,7 @@
 
 .track-crypto-heading,
 .real-time-heading{
-    font-size: 7rem;
+    font-size: 5rem;
     font-weight: 700;
     margin: 0;
 }
@@ -65,16 +65,31 @@
     right: 0;
 }
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1920px) {
  .track-crypto-heading,
  .real-time-heading{
-    font-size: 5rem;
+    font-size: 10rem !important;
     font-weight: 700;
     margin: 0;
   }
 }
 
+@media only screen and (max-width: 1500px) {
+    .track-crypto-heading,
+    .real-time-heading{
+       font-size: 8rem !important;
+       font-weight: 700;
+       margin: 0;
+     }
+   }
+
 @media only screen and (max-width: 1000px) {
+    .track-crypto-heading,
+ .real-time-heading{
+    font-size: 5rem !important;
+    font-weight: 700;
+    margin: 0;
+  }
     .phone{
         min-width: 250px;
         width: 50%;
@@ -117,7 +132,7 @@
 
    .track-crypto-heading,
    .real-time-heading{
-    font-size: 3rem;
+    font-size: 3rem !important;
     text-align: center;
    }
 

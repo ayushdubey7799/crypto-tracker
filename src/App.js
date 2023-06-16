@@ -18,6 +18,7 @@ function App() {
   return (
     
     <BrowserRouter>
+    
       <Routes>
          <Route path='/' element={<Home/>} />
          <Route path='/dashboard' element={<Dashboard/>}/>
@@ -26,6 +27,7 @@ function App() {
          <Route path='/watchlist' element={<WatchlistPage />}/>
       </Routes>
       <ToastContainer />
+
     </BrowserRouter>
   );
 }

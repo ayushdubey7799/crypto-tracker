@@ -36,6 +36,7 @@ export default function TemporaryDrawer() {
 
   useEffect(() => {
     let currentTheme = JSON.parse(localStorage.getItem('mode'));
+    
     if(!currentTheme)localStorage.setItem('mode',JSON.stringify('dark'));
   }, []);
 
