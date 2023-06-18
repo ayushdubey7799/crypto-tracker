@@ -11,6 +11,8 @@ export default function TemporaryDrawer() {
   const [signUpOpen, setSignupOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [toggle,setToggle] = useState(false);
+  const [isLight,setIsLight] = useState(JSON?.parse(localStorage.getItem('mode'))==='light'?true:false);
+
 
  const handleSignupOpen = () => setSignupOpen(true);
  const handleSignupClose = () => setSignupOpen(false);
@@ -25,6 +27,7 @@ export default function TemporaryDrawer() {
   };
    
    const applyTheme = () => {
+    setIsLight(!isLight);
     let currentTheme = JSON.parse(localStorage.getItem('mode'));
     currentTheme = currentTheme=='dark'?'light':'dark';
     let themeToBeRemoved = currentTheme=='dark'?'light':'dark';
@@ -38,6 +41,7 @@ export default function TemporaryDrawer() {
     let currentTheme = JSON.parse(localStorage.getItem('mode'));
     
     if(!currentTheme)localStorage.setItem('mode',JSON.stringify('dark'));
+    console.log(isLight);
   }, []);
 
   useEffect(() => {
@@ -57,12 +61,10 @@ export default function TemporaryDrawer() {
             <Link to="/"><p className="link">Home</p></Link>
             <Link to="/compare"><p className="link">Compare</p></Link>
             <Link to="/dashboard"><p className="link">Dashboard</p></Link>
-            {currentUser?.name?
+            {currentUser?.name &&
                (<Link to="/watchlist">
               <p className="link">Watchlist</p>
-           </Link>)
-            :
-            ("")   
+           </Link>)   
         }
          <div>
                 <p className="link" onClick={handleSignupOpen}>SignUp</p>
@@ -72,7 +74,7 @@ export default function TemporaryDrawer() {
                 <p className="link" onClick={handleLoginOpen}>LogIn/LogOut</p>
                 <Authentication open={loginOpen} handleClose={handleLoginClose} handleOpen={handleLoginOpen} type={'login'}/>
             </div>
-            <Switch onClick={toggleTheme}/>
+            <Switch onClick={toggleTheme} defaultChecked={isLight}/>
             </div>
           </Drawer>
        

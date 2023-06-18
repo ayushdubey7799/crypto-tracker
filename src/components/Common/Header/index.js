@@ -10,6 +10,7 @@ import { Switch } from "@mui/material";
 const Header = () => {
     const [signUpOpen, setSignupOpen] = useState(false);
     const [loginOpen, setLoginOpen] = useState(false);
+    const [isLight,setIsLight] = useState(JSON?.parse(localStorage.getItem('mode'))==='light'?true:false);
     const [toggle, setToggle] = useState(false);
    
 
@@ -23,8 +24,8 @@ const Header = () => {
     setToggle(!toggle);
   };
    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-   
    const applyTheme = () => {
+    setIsLight(!isLight);
     let currentTheme = JSON.parse(localStorage.getItem('mode'));
     currentTheme = currentTheme=='dark'?'light':'dark';
     let themeToBeRemoved = currentTheme=='dark'?'light':'dark';
@@ -46,7 +47,8 @@ const Header = () => {
     return <div className="navbar">
         <h1>CryptoTracker<span style={{color:"var(--blue)"}}>.</span></h1>
         <div className="links">
-           <Switch onClick={toggleTheme} defaultChecked/>
+        <Switch onClick={toggleTheme} defaultChecked={!isLight}/>
+
             <Link to="/">
                 <p className="link">Home</p>
             </Link>
@@ -66,14 +68,13 @@ const Header = () => {
                    text={"Dashboard"} 
                    onClick={() => {console.log("btn-clicked")}}/>
             </Link>
-            {currentUser?.name?
+            {currentUser?.name &&
                (<Link to="/watchlist">
                <Button 
                   text={"Watchlist"} 
                   onClick={() => {console.log("btn-clicked")}}/>
            </Link>)
-            :
-            ("")   
+           
         }
             
         </div>
