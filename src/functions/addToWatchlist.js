@@ -3,10 +3,9 @@ import {toast} from "react-toastify";
 export const addToWatchlist = (id) => {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if(!currentUser?.name){
-        toast.error("Log in to add to watchlist");
+        toast.error("Log in to add to watchlist",{autoClose: 3000});
         return false;
     }
-    console.log(currentUser);
     let watchlistItems = currentUser.watchlistCoins;
     let newWatchlistItems = [...watchlistItems,id];
     currentUser.watchlistCoins = newWatchlistItems;
@@ -17,6 +16,6 @@ export const addToWatchlist = (id) => {
     userArray = userArray.filter((user) => user.email !== currentUser.email);
     const newUserArray = [...userArray,currentUser];
     localStorage.setItem('userArray',JSON.stringify(newUserArray));
-    toast.success("Added to watchlist")
+    toast.success("Added to watchlist",{autoClose: 3000})
     return true;
 }

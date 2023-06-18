@@ -32,7 +32,6 @@ function SelectCoins({crypto1,crypto2,handleCoinChange}) {
 
   async function getData(){
     const myCoins = await get100Coins();
-    console.log(myCoins);
     setAllCoins(myCoins)
   }
 
@@ -47,7 +46,7 @@ function SelectCoins({crypto1,crypto2,handleCoinChange}) {
           onChange={(e) => handleCoinChange(e,false)}
         >
             {
-                allCoins.filter((coin) => coin.id!=crypto2).map((coin,i) =><MenuItem key={i} value={coin.id}>{coin.name}</MenuItem>)
+                allCoins.filter((coin) => coin.id!==crypto2).map((coin,i) =><MenuItem key={i} value={coin.id}>{coin.name}</MenuItem>)
             }
         </Select>
         <p>Crypto 2</p>
@@ -58,7 +57,7 @@ function SelectCoins({crypto1,crypto2,handleCoinChange}) {
           onChange={(e) => handleCoinChange(e,true)}
         >
             {
-                allCoins.filter((coin) => coin.id!=crypto1).map((coin,i) =><MenuItem key={i} value={coin.id}>{coin.name}</MenuItem>)
+                allCoins.filter((coin) => coin.id!==crypto1).map((coin,i) =><MenuItem key={i} value={coin.id}>{coin.name}</MenuItem>)
             }
         </Select>
     </div>

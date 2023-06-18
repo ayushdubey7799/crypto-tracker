@@ -36,7 +36,6 @@ function CoinPage() {
      if(data){
         coinObject(setCoinData,data);
         const prices = await getCoinPrices(id,days,priceType);
-        // console.log(prices);
 
         if(prices.length>0){
             settingChartData(setChartData,prices);

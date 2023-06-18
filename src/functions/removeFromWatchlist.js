@@ -12,5 +12,5 @@ export const removeFromWatchlist = (id) => {
     userArray = userArray.filter((user) => user.email !== currentUser.email);
     const newUserArray = [...userArray,currentUser];
     localStorage.setItem('userArray',JSON.stringify(newUserArray));
-    toast.success("Removed Successfully");
+    toast.success("Removed Successfully",{autoClose: 3000});
 }

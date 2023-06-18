@@ -25,9 +25,9 @@ const style = {
 
 export default function Authentication({ open, handleClose, type }) {
     const [user, setUser] = useState({name: "",email: ""})
-
+    
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const handleInput = (event) => {
-        console.log(event.target.name);
         if (event.target.name === "full-name") {
             let name = event.target.value;
             setUser({ ...user, name });
@@ -43,11 +43,11 @@ export default function Authentication({ open, handleClose, type }) {
     const handleSignUp = (event) => {
         event.preventDefault();
         if (user.email.trim() === '' || !user.email.includes('@')) {
-            toast.warn('Please fill valid email')
+            toast.warn('Please fill valid email',{autoClose: 3000})
             return;
         }
         if (user.name.trim() === '') {
-            toast.warn('Please fill name field')
+            toast.warn('Please fill name field',{autoClose: 3000})
             return;
         }
         if(addNewUser(user,toast)){
@@ -61,11 +61,11 @@ export default function Authentication({ open, handleClose, type }) {
     const handleLogin = (event) => {
        event.preventDefault();
        if (user.email.trim() === '' || !user.email.includes('@')) {
-        toast.warn('Please fill valid email')
+        toast.warn('Please fill valid email',{autoClose: 3000})
         return;
     }
     if (user.name.trim() === '') {
-        toast.warn('Please fill name field')
+        toast.warn('Please fill name field',{autoClose: 3000})
         return;
     }
        if(authenticateUser(user,toast)){
@@ -78,7 +78,7 @@ export default function Authentication({ open, handleClose, type }) {
     const handleLogout = (event) => {
         localStorage.setItem('currentUser',JSON.stringify({name: "",email: ""}));
         handleClose();
-        toast.success("Successfully Logged Out");
+        toast.success("Successfully Logged Out",{autoClose: 3000});
     }
 
 
@@ -127,12 +127,15 @@ export default function Authentication({ open, handleClose, type }) {
                                 <input type="email" name="email" placeholder="Email" onChange={handleInput}/>
                             </div>
 
-                            <button className="submit" type="submit" onClick={handleLogin}>LogIn</button>  
+                            <button className="submit" type="submit" onClick={handleLogin}>LogIn</button>
+                            {currentUser?.name 
+                            && 
                             <Link to="/" style={{width: '100%'}}>
                             <button className="submit logout" style={{width: '100%'}} type="submit" onClick={handleLogout}>
                                 LogOut
                             </button>
-                            </Link>
+                            </Link>} 
+                            
                         </form>)}
                 </Box>
             </Modal>

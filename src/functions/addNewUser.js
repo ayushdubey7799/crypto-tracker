@@ -4,7 +4,7 @@ export const addNewUser = (user,toast) => {
     let userArray = JSON.parse(localStorage.getItem('userArray'));
     if(userArray){
         let check = userArray.filter((item) => item.email === user.email)
-        if(check.length!=0){
+        if(check.length!==0){
             alert("email exists");
             return false;
         }
@@ -15,6 +15,6 @@ export const addNewUser = (user,toast) => {
     }
 
     localStorage.setItem('userArray',JSON.stringify(updatedUserArray));
-    toast.success("Successfully Signed Up")
+    toast.success("Successfully Signed Up",{autoClose: 3000})
     return true;
 }
